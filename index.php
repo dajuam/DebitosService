@@ -21,7 +21,7 @@
 	$mysqli = startConnection($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
 
 	try {
-  	$cliente = new SoapClient($RUTA_WS);
+        $cliente = new SoapClient($RUTA_WS);
 	} catch (Exception $e){
 		die(nl2br("No se pudo conectar al servicio SOAP del SiGeP\n"));
 	}
@@ -35,8 +35,8 @@
 	} else {
 		// Enviamos los archivos al SiGeP
 		do {
-    	$ultimo_archivo_id++;
-    	echo nl2br("Archivo ID " . $ultimo_archivo_id . ":\n");
+            $ultimo_archivo_id++;
+            echo nl2br("Archivo ID " . $ultimo_archivo_id . ":\n");
 			$query = $queryGenerica . " " . $ultimo_archivo_id;
 			$items = $mysqli->query($query) or die($mysqli->error.__LINE__);
 			while ($item = $items->fetch_object()) {
