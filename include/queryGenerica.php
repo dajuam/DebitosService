@@ -26,15 +26,15 @@ CONCAT( A.pdv,REPEAT( '0', 8 - LENGTH( A.numero) ) , A.numero) nroFactura,
 F.carga fechaIng,
 '' docAval,
 'A' estado
-FROM sigea.archivo_pago_directo_item AS A
-INNER JOIN sigea.prestadores B ON ( B.codigo_nacional = ' '+A.cod_nacional_prestador ) 
-INNER JOIN sigea.facturas C ON ( C.emisor = B.id
+FROM archivo_pago_directo_item AS A
+INNER JOIN prestadores B ON ( B.codigo_nacional = ' '+A.cod_nacional_prestador ) 
+INNER JOIN facturas C ON ( C.emisor = B.id
 AND C.numero = A.numero
 AND C.pdv = A.pdv ) 
-INNER JOIN sigea.facturas_os D ON ( D.id = C.id ) 
-INNER JOIN sigea.planillas_facturas E ON ( E.id = D.planilla ) 
-INNER JOIN sigea.archivo_pago_directo F ON (A.archivo=F.id)
-INNER JOIN sigea.terceros G ON (B.id=G.id)
+INNER JOIN facturas_os D ON ( D.id = C.id ) 
+INNER JOIN planillas_facturas E ON ( E.id = D.planilla ) 
+INNER JOIN archivo_pago_directo F ON (A.archivo=F.id)
+INNER JOIN terceros G ON (B.id=G.id)
 WHERE A.debitado <>0 and A.archivo = 
 EOT;
 

@@ -29,7 +29,15 @@
 	} 
 
 	function writeTable($connection, $item, $ultimo_archivo_id, $message) {
-		callQuery($connection, "INSERT INTO  `sigea`.`debitos_sigep` (`id` ,`ultimo_archivo_id` ,`pdv_numero` ,`importe` ,`status`)VALUES (NULL, $ultimo_archivo_id,  $item->nroFactura,  $item->impFac,  '" . $message . "')");
+		callQuery($connection, "INSERT INTO debitos_sigep (`id` ,`ultimo_archivo_id` ,`pdv_numero` ,`importe` ,`status`)VALUES (NULL, $ultimo_archivo_id,  $item->nroFactura,  $item->impFac,  '" . $message . "')");
+	}
+	
+	function mensajeDelSiGeP($response) {
+	    if ($response == null) {
+	        echo nl2br("Mensaje del SiGeP: NULL\n");
+	    } else {
+	        echo nl2br("Mensaje del SiGeP: " . $response . "\n");
+	    }
 	}
 
 ?>
