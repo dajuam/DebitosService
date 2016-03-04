@@ -33,10 +33,9 @@
 	}
 	
 	function mensajeDelSiGeP($response) {
-	    if ($response == null) {
-	        echo nl2br("Mensaje del SiGeP: NULL\n");
-	    } else {
-	        echo nl2br("Mensaje del SiGeP: " . $response . "\n");
+	    if ($response != null) {
+	        echo nl2br("Mensaje adicional del SiGeP: " . $response . "\n");
+	        echo "<br>";
 	    }
 	}
 

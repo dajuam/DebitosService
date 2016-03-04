@@ -39,29 +39,29 @@
 			while ($item = $items->fetch_object()) {
 				$prestador = iconv(mb_detect_encoding($item->prestador, mb_detect_order(), true), "UTF-8", $item->prestador);
 				$params = array(
-					"obraSocial" => $item->obraSocial,
-					"nroOp" => $item->nroOp,
-					"anioOp" => $item->anioOp,
-					"nroRemito" => $item->remito,
-					"anioRemito" => $item->anioRemito,
-					"codNacional" => $item->codNac,
-					"codFecliba" => $item->codFecliba,
-					"nomPrestador" => $prestador,
-	                "mesPrestacion" => $item->mesPrestacion,
+					"obraSocial"     => $item->obraSocial,
+					"nroOp"          => $item->nroOp,
+					"anioOp"         => $item->anioOp,
+					"nroRemito"      => $item->remito,
+					"anioRemito"     => $item->anioRemito,
+					"codNacional"    => $item->codNac,
+					"codFecliba"     => $item->codFecliba,
+					"nomPrestador"   => $prestador,
+	                "mesPrestacion"  => $item->mesPrestacion,
 	                "anioPrestacion" => $item->anioPrestacion,
-					"impFac" => $item->impFac,
-					"impDeb" => $item->impDeb,
-					"impNeto" => $item->impNeto,
-					"porcentaje" => $item->porcentaje,
-					"planilla" => $item->planilla,
-					"nroOrden" => $item->nroOrden,
-					"convenio" => $item->convenio,
-					"nroFactura" => $item->nroFactura,
-                    "fechaIng" => '2015-02-02'
+					"impFac"         => $item->impFac,
+					"impDeb"         => $item->impDeb,
+					"impNeto"        => $item->impNeto,
+					"porcentaje"     => $item->porcentaje,
+					"planilla"       => $item->planilla,
+					"nroOrden"       => $item->nroOrden,
+					"convenio"       => $item->convenio,
+					"nroFactura"     => $item->nroFactura,
+                    "fechaIng"       => '2015-02-02'
 				);
 				try {
 					// Si fue agregado con éxito, debemos incluir este registro en nuestra base
-					$response = $cliente->__soapCall("agregaDebito", $params);
+					$response = $cliente->agregaDebito($params);
 					writeTable($mysqli, $item, $ultimo_archivo_id, $response);
 					echo nl2br("El prestador " . $prestador . " fue enviado con &eacute;xito\n");
 				} catch (Exception $e) {
